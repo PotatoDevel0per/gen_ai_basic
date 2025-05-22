@@ -2,7 +2,8 @@ requests
 python-dotenv
 langchain-community
 langchain-openai
-langchainlanggraph
-openpyxl
+langchain
+langgraph
+openpyxl 
 pandas
-numpys
+numpy
