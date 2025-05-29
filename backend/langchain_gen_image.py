@@ -13,9 +13,9 @@ from openai import OpenAI
 # 3. LLM -> 확장 Prompt 번역
 # 4. DALL-E3 -> 이미지 생성 요청
 
-openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # 1. .env 파일을을 찾고 로드함
+openai_api_key = os.getenv("OPENAI_API_KEY")
 _ = load_dotenv(find_dotenv()) 
 
 # 2. LLM 모델 생성
