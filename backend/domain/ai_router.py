@@ -15,5 +15,11 @@ async def gen_image(req: PromptRequest):
     current_time = datetime.now() # 이미지 생성 날짜
     ai_service = AIService()
 
+    graph = ai_service.gen_graph(req.prompt)
+    state = graph.invoke({
+        "id" : unique_id,
+        "prompt": req.prompt,
+        "image_url": "",
+    })
 
-    return {"url": ""}
+    return {"url": state["image_url"]}

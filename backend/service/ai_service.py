@@ -58,7 +58,7 @@ class AIService:
     ## 5-3. 이미지 생성
     def generate_image(self, state: State) -> State:
         prompt = state["prompt"]
-        response = client.images.generate(
+        response = self.client.images.generate(
             model="dall-e-3",
             prompt=prompt,
             size="1024x1024",
@@ -74,9 +74,9 @@ class AIService:
     # 6. LangGraph 생성
     def gen_graph(self, prompt: str):
         workflow = StateGraph(State)
-        workflow.add_node("refine_prompt", refine_prompt)
-        workflow.add_node("translate_prompt", translate_prompt)
-        workflow.add_node("generate_image", generate_image)
+        workflow.add_node("refine_prompt", self.refine_prompt)
+        workflow.add_node("translate_prompt", self.translate_prompt)
+        workflow.add_node("generate_image", self.generate_image)
 
         workflow.set_entry_point("refine_prompt") # 시작 노드
         workflow.add_edge("refine_prompt", "translate_prompt") # 노드 연결
